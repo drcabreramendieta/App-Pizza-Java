@@ -55,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
         jList3.setBorder(javax.swing.BorderFactory.createTitledBorder("Borde"));
         jScrollPane3.setViewportView(jList3);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Agregar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -84,12 +84,12 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel2);
+        jTabbedPane1.addTab("Pizza", jPanel2);
 
         jList4.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
         jScrollPane4.setViewportView(jList4);
 
-        jButton2.setText("jButton1");
+        jButton2.setText("Agregar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -112,7 +112,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel3);
+        jTabbedPane1.addTab("Extra", jPanel3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
