@@ -21,7 +21,7 @@ public class Options {
     private HashMap<String, Slide> availableSlides;
     private HashMap<String, Edge> availableEdges;
     private HashMap<String, Extra> availableExtras;
-    private HashMap<String, Integer> availableSize;
+    private HashMap<String, Size> availableSize;
     
     private void fillSlides(){
         availableSlides = new HashMap<>();
@@ -98,7 +98,10 @@ public class Options {
             String line = br.readLine();
             while(line != null){
                 String[] content = line.split(" ");
-                availableSize.put(content[0], Integer.parseInt(content[1]));
+                Size size = new Size();
+                size.setName(content[0]);
+                size.setCost(Double.parseDouble(content[1]));
+                availableSize.put(content[0], size);
                 line = br.readLine();
             }
         } catch (FileNotFoundException ex) {
@@ -127,9 +130,27 @@ public class Options {
         return availableExtras.get(key);
     }
     
-    public int getSize(String key){
+    public Size getSize(String key){
         return availableSize.get(key);
     }
+
+    public HashMap<String, Slide> getAvailableSlides() {
+        return availableSlides;
+    }
+
+    public HashMap<String, Edge> getAvailableEdges() {
+        return availableEdges;
+    }
+
+    public HashMap<String, Extra> getAvailableExtras() {
+        return availableExtras;
+    }
+
+    public HashMap<String, Size> getAvailableSize() {
+        return availableSize;
+    }
+    
+    
     
     @Override
     public String toString(){

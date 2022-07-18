@@ -5,6 +5,7 @@
  */
 package controllers;
 import models.*;
+import view.*;
 
 /**
  *
@@ -13,25 +14,16 @@ import models.*;
 public class Principal {
     public static void main(String[] args){
         Options options = new Options();
-        System.out.println(options);
-        Pizza pizza = new Pizza();
-        pizza.setEdge(options.getEdge("queso"));
+        Option typeOption = new Option(options.getAvailableSlides());
+        Option sizeOption = new Option(options.getAvailableSize());
+        Option edgeOption = new Option(options.getAvailableEdges());
+        Option extraOption = new Option(options.getAvailableExtras());
         
-        for(int i=0;i < options.getSize("familiar");i++){
-            pizza.addSlide(options.getSlide("pepperoni"));
-        }
-        
-        Client client = new Client("Pepito");
-        
-        Order order = new Order(client, 0);
-        order.addPizza(pizza);
-        order.addExtra(options.getExtra("coca-cola"));
-        
-        System.out.println("La orden cuesta: "+ order.getCost());
-        
-        OrdersModel ordersModel = new OrdersModel();
-        ordersModel.addOrder(order);
-        
-        
+        MainWindow mw = new MainWindow();
+        mw.setModelOptions(typeOption, 
+                sizeOption, 
+                edgeOption, 
+                extraOption);
+        mw.setVisible(true);
     }
 }

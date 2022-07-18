@@ -36,6 +36,6 @@ public class Item {
     
     @Override
     public String toString(){
-        return name+"  "+cost.toString();
+        return name;
     }
 }
