@@ -33,4 +33,9 @@ public class Pizza {
         }
         return edge.getCost() + cost;
     }
+    
+    @Override
+    public String toString(){
+        return "Pizza "+ slides.get(0).getName()+" "+slides.size()+" slides";
+    }
 }

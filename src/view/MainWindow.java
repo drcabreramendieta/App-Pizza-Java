@@ -6,6 +6,7 @@
 package view;
 import java.awt.event.ActionListener;
 import javax.swing.ListModel;
+import models.Item;
 
 /**
  *
@@ -47,6 +48,8 @@ public class MainWindow extends javax.swing.JFrame {
         preOrderList = new javax.swing.JList<>();
         orderButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        clientTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         prepOrderList = new javax.swing.JList<>();
@@ -140,6 +143,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         deleteButton.setText("Eliminar");
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Nombre:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,12 +155,16 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(orderButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteButton)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clientTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,10 +176,13 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(orderButton)
-                            .addComponent(deleteButton)))
+                            .addComponent(clientTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderButton)
+                    .addComponent(deleteButton)))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Pedidos"));
@@ -199,7 +212,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cancelOrderButton))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane6, jScrollPane7, jScrollPane8});
@@ -226,7 +239,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,6 +289,18 @@ public class MainWindow extends javax.swing.JFrame {
         });
     }
     
+    public String[] getRequiredPizza(){
+        String[] requiredPizza = new String[3];
+        requiredPizza[0] = typeList.getSelectedValue().getName();
+        requiredPizza[1] = sizeList.getSelectedValue().getName();
+        requiredPizza[2] = edgeList.getSelectedValue().getName();
+        return requiredPizza;
+    }
+    
+    public Item getRequiredExtra(){
+        return extrasList.getSelectedValue();
+    }
+    
     public void addPizzaListener(ActionListener listener){
         addPizzaButton.addActionListener(listener);
     }
@@ -321,10 +346,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton addExtraButton;
     private javax.swing.JButton addPizzaButton;
     private javax.swing.JButton cancelOrderButton;
+    private javax.swing.JTextField clientTextField;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JList<String> edgeList;
-    private javax.swing.JList<String> extrasList;
+    private javax.swing.JList<Item> edgeList;
+    private javax.swing.JList<Item> extrasList;
     private javax.swing.JList<String> initOrderList;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -342,7 +369,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JList<String> preOrderList;
     private javax.swing.JList<String> prepOrderList;
     private javax.swing.JList<String> readyList;
-    private javax.swing.JList<String> sizeList;
-    private javax.swing.JList<String> typeList;
+    private javax.swing.JList<Item> sizeList;
+    private javax.swing.JList<Item> typeList;
     // End of variables declaration//GEN-END:variables
 }
