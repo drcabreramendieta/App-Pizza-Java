@@ -29,14 +29,15 @@ public class OrdersModel extends AbstractListModel<Order>{
     }
     
     public void addOrder(Order order){
-        orders.add(order);
         int index = orders.size();
+        orders.add(order);
         fireIntervalAdded(this, index, index);
     }
     
-    public void removeOrder(int index){
-        orders.remove(index);
+    public void removeOrder(Order order){
+        int index = orders.indexOf(order);
         fireIntervalRemoved(this, index, index);
+        orders.remove(index);
     }
     
 }

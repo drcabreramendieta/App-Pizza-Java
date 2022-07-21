@@ -7,6 +7,7 @@ package view;
 import java.awt.event.ActionListener;
 import javax.swing.ListModel;
 import models.Item;
+import models.Order;
 
 /**
  *
@@ -297,8 +298,20 @@ public class MainWindow extends javax.swing.JFrame {
         return requiredPizza;
     }
     
+    public String getClient(){
+        return clientTextField.getText();
+    }
+    
     public Item getRequiredExtra(){
         return extrasList.getSelectedValue();
+    }
+    
+    public Object getSelectedItemPreOrder(){
+        return preOrderList.getSelectedValue();
+    }
+    
+    public Order getSelectedCreatedOrder(){
+        return initOrderList.getSelectedValue();
     }
     
     public void addPizzaListener(ActionListener listener){
@@ -350,7 +363,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton deleteButton;
     private javax.swing.JList<Item> edgeList;
     private javax.swing.JList<Item> extrasList;
-    private javax.swing.JList<String> initOrderList;
+    private javax.swing.JList<Order> initOrderList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -366,7 +379,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton orderButton;
-    private javax.swing.JList<String> preOrderList;
+    private javax.swing.JList<Object> preOrderList;
     private javax.swing.JList<String> prepOrderList;
     private javax.swing.JList<String> readyList;
     private javax.swing.JList<Item> sizeList;

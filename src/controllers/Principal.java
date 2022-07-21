@@ -20,6 +20,7 @@ public class Principal {
         Option extraOption = new Option(options.getAvailableExtras());
         
         PreOrderModel pom = new PreOrderModel();
+        OrdersModel om = new OrdersModel();
         
         MainWindow mw = new MainWindow();
         mw.setModelOptions(typeOption, 
@@ -27,10 +28,21 @@ public class Principal {
                 edgeOption, 
                 extraOption);
         mw.setModelPreOrder(pom);
+        OrdersWithState createdOrders = new OrdersWithState(om, 0);
+        OrdersWithState prepOrders = new OrdersWithState(om, 1);
+        OrdersWithState readyOrders = new OrdersWithState(om, 2);
+        mw.setModelOrders(createdOrders, prepOrders, readyOrders);
         ListenerAddPizza lap = new ListenerAddPizza(mw, pom, options);
         ListenerAddExtra lae = new ListenerAddExtra(mw, pom);
+        ListenerOrder lao = new ListenerOrder(mw, om, pom);
+        ListenerDelete ld = new ListenerDelete(mw, pom);
+        ListenerCancelOrder lco = new ListenerCancelOrder(mw, om);
         mw.addPizzaListener(lap);
         mw.addExtraListener(lae);
+        mw.orderListener(lao);
+        mw.deleteListener(ld);
+        mw.cancelListener(lco);
+        
         mw.setVisible(true);
     }
 }

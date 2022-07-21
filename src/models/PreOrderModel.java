@@ -34,4 +34,9 @@ public class PreOrderModel extends AbstractListModel{
         fireIntervalAdded(this,index,index);
     }
     
+    public void removeElement(Object item){
+        int index = preOrder.indexOf(item);
+        preOrder.remove(index);
+        fireIntervalRemoved(this,index,index);
+    }
 }
