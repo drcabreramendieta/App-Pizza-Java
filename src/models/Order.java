@@ -50,5 +50,31 @@ public class Order {
         this.state = state;
     }
     
+    @Override
+    public String toString(){
+        String infoPizzas = "";
+        for(Pizza pizza: pizzas){
+            infoPizzas += pizza.toString()+"; ";
+        }
+        
+        String infoExtras = "";
+        for(Extra extra: extras){
+            infoExtras += extra.toString()+"; ";
+        }
+        return infoPizzas +"; "+infoExtras;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public ArrayList<Extra> getExtras() {
+        return extras;
+    }
+    
     
 }

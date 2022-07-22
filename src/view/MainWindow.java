@@ -20,6 +20,8 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        RendererOrder ro = new RendererOrder(0);
+        initOrderList.setCellRenderer(ro);
     }
 
     /**

@@ -6,6 +6,7 @@
 package view;
 import java.awt.event.ActionListener;
 import javax.swing.ListModel;
+import models.Order;
 
 /**
  *
@@ -18,6 +19,8 @@ public class SecondWindow extends javax.swing.JFrame {
      */
     public SecondWindow() {
         initComponents();
+        RendererOrder ro = new RendererOrder(1);
+        initOrderList.setCellRenderer(ro);
     }
 
     /**
@@ -152,14 +155,22 @@ public class SecondWindow extends javax.swing.JFrame {
         initOrderList.setModel(initModel);
         prepOrderList.setModel(prepModel);
     }
+    
+    public Order getFirstOrder(){
+        return initOrderList.getModel().getElementAt(0);
+    }
+    
+    public Order getSelectedOrder(){
+        return prepOrderList.getSelectedValue();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> initOrderList;
+    private javax.swing.JList<Order> initOrderList;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton prepButton;
-    private javax.swing.JList<String> prepOrderList;
+    private javax.swing.JList<Order> prepOrderList;
     private javax.swing.JButton readyButton;
     // End of variables declaration//GEN-END:variables
 }

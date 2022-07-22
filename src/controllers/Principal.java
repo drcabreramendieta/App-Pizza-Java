@@ -43,6 +43,18 @@ public class Principal {
         mw.deleteListener(ld);
         mw.cancelListener(lco);
         
+        SecondWindow sw = new SecondWindow();
+        sw.setModelOrders(createdOrders, prepOrders);
+        ListenerCook lc = new ListenerCook(sw, om);
+        sw.prepListener(lc);
+        ListenerReady lr = new ListenerReady(sw, om);
+        sw.readyListener(lr);
+        
+        ClientWindow cw = new ClientWindow();
+        cw.setModelOrder(readyOrders);
+        
         mw.setVisible(true);
+        sw.setVisible(true);
+        cw.setVisible(true);
     }
 }

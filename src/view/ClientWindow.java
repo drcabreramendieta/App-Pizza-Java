@@ -6,6 +6,7 @@
 package view;
 
 import javax.swing.ListModel;
+import models.Order;
 
 /**
  *
@@ -98,6 +99,6 @@ public class ClientWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JList<String> readyList;
+    private javax.swing.JList<Order> readyList;
     // End of variables declaration//GEN-END:variables
 }

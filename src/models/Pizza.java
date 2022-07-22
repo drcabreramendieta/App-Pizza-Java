@@ -36,6 +36,9 @@ public class Pizza {
     
     @Override
     public String toString(){
-        return "Pizza "+ slides.get(0).getName()+" "+slides.size()+" slides";
+        return "Pizza "+ 
+                slides.get(0).getName()+" "+
+                slides.size()+" slides" + 
+                " borde de " + edge.getName();
     }
 }

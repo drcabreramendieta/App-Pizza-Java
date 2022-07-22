@@ -40,4 +40,10 @@ public class OrdersModel extends AbstractListModel<Order>{
         orders.remove(index);
     }
     
+    public void changeElement(Order order, int newState){
+        int index = orders.indexOf(order);
+        order.setState(newState);
+        fireContentsChanged(this, index, index);
+    }
+    
 }
