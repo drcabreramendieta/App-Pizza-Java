@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ListModel;
 import models.Item;
 import models.Order;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -20,8 +21,12 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        dw = new DialogWindow(this, true);
         RendererOrder ro = new RendererOrder(0);
         initOrderList.setCellRenderer(ro);
+        RendererOrder roPrep = new RendererOrder(2);
+        prepOrderList.setCellRenderer(roPrep);
+        readyList.setCellRenderer(roPrep);
     }
 
     /**
@@ -300,20 +305,40 @@ public class MainWindow extends javax.swing.JFrame {
         return requiredPizza;
     }
     
-    public String getClient(){
-        return clientTextField.getText();
+    public void showDialog(String message){
+        dw.showDialog(message);
+    }
+    
+    public String getClient() throws NullPointerException{
+        String clientName = clientTextField.getText();
+        if (clientName.equals("")){
+            throw new NullPointerException("El cliente no puede estar vacio");
+        }
+        return clientName;
     }
     
     public Item getRequiredExtra(){
-        return extrasList.getSelectedValue();
+        Item item = extrasList.getSelectedValue();
+        if(item == null){
+            throw new NullPointerException("No existe un elemento seleccionado");
+        }
+        return item;
     }
     
-    public Object getSelectedItemPreOrder(){
-        return preOrderList.getSelectedValue();
+    public Object getSelectedItemPreOrder() throws NullPointerException{
+        Object selectedItem = preOrderList.getSelectedValue();
+        if(selectedItem == null){
+            throw new NullPointerException("No existe un elemento seleccionado");
+        }
+        return selectedItem;
     }
     
-    public Order getSelectedCreatedOrder(){
-        return initOrderList.getSelectedValue();
+    public Order getSelectedCreatedOrder()throws NullPointerException{
+        Order selectedOrder = initOrderList.getSelectedValue();
+        if (selectedOrder == null){
+            throw new NullPointerException("No existe un elemento seleccionado");
+        }
+        return selectedOrder;
     }
     
     public void addPizzaListener(ActionListener listener){
@@ -382,9 +407,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton orderButton;
     private javax.swing.JList<Object> preOrderList;
-    private javax.swing.JList<String> prepOrderList;
-    private javax.swing.JList<String> readyList;
+    private javax.swing.JList<Order> prepOrderList;
+    private javax.swing.JList<Order> readyList;
     private javax.swing.JList<Item> sizeList;
     private javax.swing.JList<Item> typeList;
     // End of variables declaration//GEN-END:variables
+    private DialogWindow dw;
 }

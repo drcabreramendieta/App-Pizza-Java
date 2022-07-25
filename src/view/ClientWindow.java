@@ -19,6 +19,8 @@ public class ClientWindow extends javax.swing.JFrame {
      */
     public ClientWindow() {
         initComponents();
+        RendererOrder ro = new RendererOrder(2);
+        readyList.setCellRenderer(ro);
     }
 
     /**

@@ -30,11 +30,18 @@ public class RendererOrder extends JLabel implements ListCellRenderer<Order>{
         return order.toString();
     }
     
+    private String rendererPrepOrderMW(Order order){
+        return order.getClient().getName();
+    }
+    
     @Override
-    public Component getListCellRendererComponent(JList<? extends Order> jlist, Order e, int i, boolean bln, boolean bln1) {        
+    public Component getListCellRendererComponent(JList<? extends Order> jlist,
+            Order e, int i, 
+            boolean bln, boolean bln1) {        
         switch(listID){
             case 0: setText(rendererInitOrderMW(e)); break;
             case 1: setText(rendererInitOrderSW(e)); break;
+            case 2: setText(rendererPrepOrderMW(e)); break;
         }
         return this;
     }

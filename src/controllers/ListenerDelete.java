@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import models.PreOrderModel;
 import view.MainWindow;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -24,8 +25,13 @@ public class ListenerDelete implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Object selectedItem = mw.getSelectedItemPreOrder();
-        pom.removeElement(selectedItem);
+        try{
+            Object selectedItem = mw.getSelectedItemPreOrder();
+            pom.removeElement(selectedItem);
+        }
+        catch(NullPointerException ex){
+            mw.showDialog(ex.getMessage());
+        }
     }
     
 }

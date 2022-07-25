@@ -25,8 +25,13 @@ public class ListenerCook implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Order order = sw.getFirstOrder();
-        om.changeElement(order, 1);
+        try{
+            Order order = sw.getFirstOrder();
+            om.changeElement(order, 1);
+        }
+        catch(IndexOutOfBoundsException ex){
+            sw.showDialog("No hay órdenes que preparar");
+        }
     }
     
 }

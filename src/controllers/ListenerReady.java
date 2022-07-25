@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import view.SecondWindow;
 import models.OrdersModel;
 import models.Order;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -25,8 +26,13 @@ public class ListenerReady implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Order order = sw.getSelectedOrder();
-        om.changeElement(order, 2);
+        try{
+            Order order = sw.getSelectedOrder();
+            om.changeElement(order, 2);
+        }
+        catch(NullPointerException ex){
+            sw.showDialog(ex.getMessage());
+        }
     }
     
 }

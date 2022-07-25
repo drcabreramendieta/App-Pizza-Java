@@ -13,6 +13,7 @@ import models.Client;
 import models.PreOrderModel;
 import models.Pizza;
 import models.Extra;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -31,19 +32,28 @@ public class ListenerOrder implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String clientName = mw.getClient();
-        Client client = new Client(clientName);
-        Order order = new Order(client, 0);
-        for (int i=0; i < pom.getSize(); i++){
-            Object obj = pom.getElementAt(i);
-            if(obj.getClass().toString().equals("class models.Pizza")){
-                order.addPizza((Pizza)obj);
+        try{
+            if (pom.getSize() == 0){
+                mw.showDialog("No hay elementos en la preorden");
+                return;
             }
-            else{
-                order.addExtra((Extra)obj);
+            String clientName = mw.getClient();
+            Client client = new Client(clientName);
+            Order order = new Order(client, 0);
+            for (int i=0; i < pom.getSize(); i++){
+                Object obj = pom.getElementAt(i);
+                if(obj.getClass().toString().equals("class models.Pizza")){
+                    order.addPizza((Pizza)obj);
+                }
+                else{
+                    order.addExtra((Extra)obj);
+                }
             }
+            om.addOrder(order);
         }
-        om.addOrder(order);
+        catch(NullPointerException ex){
+            mw.showDialog(ex.getMessage());
+        }
     }
     
 }

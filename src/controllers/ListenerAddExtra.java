@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import view.MainWindow;
 import models.PreOrderModel;
 import models.Item;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -25,8 +26,13 @@ public class ListenerAddExtra implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Item requiredExtra = mw.getRequiredExtra();
-        pom.addElement(requiredExtra);
+        try{
+            Item requiredExtra = mw.getRequiredExtra();
+            pom.addElement(requiredExtra);
+        }
+        catch(NullPointerException ex){
+            mw.showDialog(ex.getMessage());
+        }
     }
     
 }

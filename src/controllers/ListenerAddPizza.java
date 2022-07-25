@@ -28,16 +28,21 @@ public class ListenerAddPizza implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String[] requiredPizza = v.getRequiredPizza();
-        Pizza pizza = new Pizza();
-        pizza.setEdge(options.getAvailableEdges().get(requiredPizza[2]));
-        int nSlides = options.getAvailableSize().get(
-                requiredPizza[1]).getCost().intValue();
-        for(int i=0; i < nSlides; i++){
-            pizza.addSlide(options.getAvailableSlides().get(
-                    requiredPizza[0]));
+        try{
+            String[] requiredPizza = v.getRequiredPizza();
+            Pizza pizza = new Pizza();
+            pizza.setEdge(options.getAvailableEdges().get(requiredPizza[2]));
+            int nSlides = options.getAvailableSize().get(
+                    requiredPizza[1]).getCost().intValue();
+            for(int i=0; i < nSlides; i++){
+                pizza.addSlide(options.getAvailableSlides().get(
+                        requiredPizza[0]));
+            }
+            pom.addElement(pizza);
         }
-        pom.addElement(pizza);
+        catch(Exception ex){
+            v.showDialog("El tipo y tamaño deben estar seleccionados");
+        }
     }
     
 }

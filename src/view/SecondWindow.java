@@ -7,6 +7,7 @@ package view;
 import java.awt.event.ActionListener;
 import javax.swing.ListModel;
 import models.Order;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -19,8 +20,10 @@ public class SecondWindow extends javax.swing.JFrame {
      */
     public SecondWindow() {
         initComponents();
+        dw = new DialogWindow(this, true);
         RendererOrder ro = new RendererOrder(1);
         initOrderList.setCellRenderer(ro);
+        prepOrderList.setCellRenderer(ro);
     }
 
     /**
@@ -157,11 +160,20 @@ public class SecondWindow extends javax.swing.JFrame {
     }
     
     public Order getFirstOrder(){
-        return initOrderList.getModel().getElementAt(0);
+        Order firstOrder = initOrderList.getModel().getElementAt(0);
+        return firstOrder;
     }
     
     public Order getSelectedOrder(){
-        return prepOrderList.getSelectedValue();
+        Order selectedOrder = prepOrderList.getSelectedValue();
+        if(selectedOrder == null){
+            throw new NullPointerException("No hay un elemento seleccionado");
+        }
+        return selectedOrder;
+    }
+    
+    public void showDialog(String message){
+        dw.showDialog(message);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -173,4 +185,5 @@ public class SecondWindow extends javax.swing.JFrame {
     private javax.swing.JList<Order> prepOrderList;
     private javax.swing.JButton readyButton;
     // End of variables declaration//GEN-END:variables
+    private DialogWindow dw;
 }

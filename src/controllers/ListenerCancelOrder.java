@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import view.MainWindow;
 import models.OrdersModel;
 import models.Order;
+import java.lang.NullPointerException;
 
 /**
  *
@@ -25,8 +26,13 @@ public class ListenerCancelOrder implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Order selectedOrder = mw.getSelectedCreatedOrder();
-        om.removeOrder(selectedOrder);
+        try{
+            Order selectedOrder = mw.getSelectedCreatedOrder();
+            om.removeOrder(selectedOrder);
+        }
+        catch(NullPointerException ex){
+            mw.showDialog(ex.getMessage());
+        }
     }
     
 }
