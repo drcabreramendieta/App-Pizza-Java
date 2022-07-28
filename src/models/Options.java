@@ -7,9 +7,12 @@ package models;
 import java.util.HashMap;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,9 +28,11 @@ public class Options {
     
     private void fillSlides(){
         availableSlides = new HashMap<>();
-        File f = new File("C:\\Users\\UPS\\Documents\\NetBeansProjects\\AppPizzeria\\src\\resources\\slides.pizza");
+        //URL url = Options.class.getResource("/resources/slides.pizza");
+        //File f = new File(url.getPath());
+        InputStream f = Options.class.getResourceAsStream("/resources/slides.pizza");
         try {
-            FileReader fr = new FileReader(f);
+            InputStreamReader fr = new InputStreamReader(f);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line != null){
@@ -47,9 +52,9 @@ public class Options {
     
     private void fillEdges(){
         availableEdges = new HashMap<>();
-        File f = new File("C:\\Users\\UPS\\Documents\\NetBeansProjects\\AppPizzeria\\src\\resources\\edges.pizza");
+        InputStream f =  Options.class.getResourceAsStream("/resources/edges.pizza");
         try {
-            FileReader fr = new FileReader(f);
+            InputStreamReader fr = new InputStreamReader(f);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line != null){
@@ -69,9 +74,9 @@ public class Options {
     
     private void fillExtras(){
         availableExtras = new HashMap<>();
-        File f = new File("C:\\Users\\UPS\\Documents\\NetBeansProjects\\AppPizzeria\\src\\resources\\extras.pizza");
+        InputStream f = Options.class.getResourceAsStream("/resources/extras.pizza");
         try {
-            FileReader fr = new FileReader(f);
+            InputStreamReader fr = new InputStreamReader(f);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line != null){
@@ -91,9 +96,9 @@ public class Options {
     
     private void fillSize(){
         availableSize = new HashMap<>();
-        File f = new File("C:\\Users\\UPS\\Documents\\NetBeansProjects\\AppPizzeria\\src\\resources\\size.pizza");
+        InputStream f = Options.class.getResourceAsStream("/resources/size.pizza");
         try {
-            FileReader fr = new FileReader(f);
+            InputStreamReader fr = new InputStreamReader(f);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             while(line != null){
